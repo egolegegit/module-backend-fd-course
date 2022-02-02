@@ -21,7 +21,7 @@ yargs.command({
 
 yargs.command({
   command: "del",
-  describe: "Delete note from list",
+  describe: "Remove note from list",
   builder: {
     id: {
       type: "string",
