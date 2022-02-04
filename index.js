@@ -1,13 +1,18 @@
 ﻿const http = require("http");
 const chalk = require("chalk");
+const fs = require("fs/promises");
+const path = require("path");
 
 const port = 3000;
+const basePath = path.join(__dirname, "pages");
 
-const server = http.createServer((req, res) => {
-  console.log("Request method:", req.method);
-  console.log("Request url:", req.url);
-
-  res.end("I am server");
+const server = http.createServer(async (req, res) => {
+  if (req.method === "GET") {
+    const content = await fs.readFile(path.join(basePath, "index.html"));
+    // res.setHeader("Content-type", "text/html");
+    res.writeHead(200, { "Content-type": "text/html" });
+    res.end(content);
+  }
 });
 
 server.listen(port, () => {
