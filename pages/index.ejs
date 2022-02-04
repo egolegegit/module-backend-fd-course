@@ -13,11 +13,11 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <title>Node simple site</title>
+    <title><%=title%></title>
   </head>
   <body>
     <div class="container w-50">
-      <h1 class="text-center">This is working!</h1>
+      <h1 class="text-center"><%=title%></h1>
     </div>
     <form action="/" method="post" class="mb-2 w-50">
       <div class="form-group mb-2">
@@ -25,5 +25,16 @@
         <button class="btn btn-primary" type="submit">Create!</button>
       </div>
     </form>
+
+
+  <div class="card">
+    <ul class="list-group">
+      <% for (let i = 0; i < notes.length; i++) { %>
+      <li class="list-group-item">
+        <%= notes[i].title %>
+      </li>
+      <% } %>
+    </ul>
+  </div>
   </body>
 </html>
