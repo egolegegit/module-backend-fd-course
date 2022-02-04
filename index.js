@@ -4,9 +4,10 @@ const chalk = require("chalk");
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-  console.log("server");
+  console.log("Request method:", req.method);
+  console.log("Request url:", req.url);
 
-  res.end("Stop server");
+  res.end("I am server");
 });
 
 server.listen(port, () => {
