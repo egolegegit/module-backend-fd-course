@@ -16,6 +16,13 @@
     <title><%=title%></title>
   </head>
   <body>
+
+  <% if (created) {%>
+    <div class="alert alert-success">
+      Note has been created!
+    </div>
+  <% } %>
+
     <div class="container w-50">
       <h1 class="text-center"><%=title%></h1>
     </div>
@@ -30,11 +37,14 @@
   <div class="card">
     <ul class="list-group">
       <% for (let i = 0; i < notes.length; i++) { %>
-      <li class="list-group-item">
-        <%= notes[i].title %>
+      <li class="list-group-item d-flex justify-content-between">
+            <%= notes[i].title %>
+          <button class="btn btn-danger" data-type="remove"
+                  data-id="<%=notes[i].id%>">&times</button>
       </li>
       <% } %>
     </ul>
   </div>
+  <script src="app.js"></script>
   </body>
 </html>
