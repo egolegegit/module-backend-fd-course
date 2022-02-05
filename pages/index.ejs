@@ -38,15 +38,32 @@
     <ul class="list-group">
       <% for (let i = 0; i < notes.length; i++) { %>
       <li class="list-group-item d-flex justify-content-between">
-        <span data-id="<%=notes[i].id%>"><%= notes[i].title %></span>
+        <div class="w-50">
+          <span data-type="title" data-id="<%=notes[i].id%>"><%= notes[i]
+                    .title %></span>
+          <input  data-type="input"
+                  class="form-control visually-hidden"
+                  data-id="<%=notes[i].id%>"
+                  type="text">
+        </div>
+
         <div>
           <button class="btn btn-primary" data-type="edit"
-                               data-id="<%=notes[i].id%>">Редактировать
+                  data-id="<%=notes[i].id%>">Обновить
           </button>
+            <button class="btn btn-success visually-hidden" data-id="<%=notes[i].id%>"
+                    data-type="save">
+              Сохранить
+            </button>
+            <button class="btn btn-danger visually-hidden" data-id="<%=notes[i].id%>"
+                    data-type="cancel">
+              Отменить
+            </button>
           <button class="btn btn-danger" data-type="remove"
                   data-id="<%=notes[i].id%>">&times
           </button>
         </div>
+
       </li>
       <% } %>
     </ul>
