@@ -2,7 +2,7 @@
 let elTitle;
 let elementsByDataSetId;
 let elementsByDataSetType;
-const actions = ["edit", "save", "cancel", "remove", "input"];
+const actions = ["input", "edit", "save", "cancel", "remove"];
 
 document.addEventListener("click", (event) => {
   let id;
