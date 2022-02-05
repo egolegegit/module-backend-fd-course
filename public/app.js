@@ -1,7 +1,7 @@
-﻿let elementsByDataSetId;
-let elementsByDataSetType;
-let elInput;
+﻿let elInput;
 let elTitle;
+let elementsByDataSetId;
+let elementsByDataSetType;
 const actions = ["edit", "save", "cancel", "remove", "input"];
 
 document.addEventListener("click", (event) => {
@@ -43,6 +43,7 @@ async function removeNote(id) {
 
 async function editNote(id) {
   if (!elInput.value) {
+    // output
   } else {
     let updateTitle = elInput.value;
     updateTitle = updateTitle.trim();
