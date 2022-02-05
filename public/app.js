@@ -43,7 +43,7 @@ async function removeNote(id) {
 
 async function editNote(id) {
   if (!elInput.value) {
-    // output
+    // toast danger
   } else {
     let updateTitle = elInput.value;
     updateTitle = updateTitle.trim();
