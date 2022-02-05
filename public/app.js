@@ -1,21 +1,21 @@
-﻿const actions = ["edit", "save", "cancel", "remove", "input"];
-let elementByDataSetId;
-let elementByDataSetType;
+﻿let elementsByDataSetId;
+let elementsByDataSetType;
 let elInput;
 let elTitle;
+const actions = ["edit", "save", "cancel", "remove", "input"];
 
 document.addEventListener("click", (event) => {
   let id;
   if (actions.includes(event.target.dataset.type)) {
     id = event.target.dataset.id;
-    elementByDataSetId = Array.from(
+    elementsByDataSetId = Array.from(
       document.querySelectorAll(`[data-id="${id}"]`)
     );
-    elementByDataSetType = Array.from(
+    elementsByDataSetType = Array.from(
       document.querySelectorAll(`[data-type="edit"]`)
     );
-    elInput = elementByDataSetId.find((el) => "input" === el.dataset.type);
-    elTitle = elementByDataSetId.find((el) => "title" === el.dataset.type);
+    elInput = elementsByDataSetId.find((el) => "input" === el.dataset.type);
+    elTitle = elementsByDataSetId.find((el) => "title" === el.dataset.type);
   }
 
   if (event.target.dataset.type === "remove") {
@@ -61,7 +61,7 @@ async function editNote(id) {
 
 function openEdit(id) {
   elInput.value = elTitle.innerText;
-  elementByDataSetId.forEach((el) => {
+  elementsByDataSetId.forEach((el) => {
     if (
       actions.includes(el.dataset.type) &&
       el.dataset.type !== "edit" &&
@@ -72,7 +72,7 @@ function openEdit(id) {
       el.classList.add("visually-hidden");
     }
   });
-  elementByDataSetType.forEach((el) => {
+  elementsByDataSetType.forEach((el) => {
     if (el.dataset.id !== id) {
       el.setAttribute("disabled", "disabled");
     }
@@ -80,7 +80,7 @@ function openEdit(id) {
 }
 
 function closeEdit(id) {
-  elementByDataSetId.forEach((el) => {
+  elementsByDataSetId.forEach((el) => {
     if (
       actions.includes(el.dataset.type) &&
       el.dataset.type !== "edit" &&
@@ -91,7 +91,7 @@ function closeEdit(id) {
       el.classList.remove("visually-hidden");
     }
   });
-  elementByDataSetType.forEach((el) => {
+  elementsByDataSetType.forEach((el) => {
     if (el.dataset.id !== id) {
       el.removeAttribute("disabled");
     }
